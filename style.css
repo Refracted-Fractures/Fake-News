@@ -1,0 +1,536 @@
+* {
+    box-sizing: border-box;
+  }
+  /* Main Styling */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+  }
+  /* Header and Navigation */
+  .main-header {
+    padding: 15px 30px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .logo a {
+    text-decoration: none;
+  }
+
+  .logo-image {
+    width: auto;
+        margin-bottom: 0;
+  }
+  /* Hamburger Button */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    transition: transform 0.3s ease;
+  }
+
+  /* Navigation Links */
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .nav-link {
+    color: #161616;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #555; /* Slight color change on hover */
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #e30101;
+    transition: width 0.4s ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+  
+    a {
+    color: #e30101;
+    text-decoration: none;
+  }
+  
+  h1, h2, h3, h4 {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  h1 {
+    font-size: 1.4em;
+  }
+  
+  h2 {
+    font-size: 1.3em;
+  }
+  
+  h3 {
+    font-size: 1.3em;
+    display: grid;
+    justify-content: center;
+  }
+  
+  p {
+    font-size: 1em;
+    margin: 1em 0;
+    line-height: 1.4;
+    color: #333;
+  }
+  
+    /* Ordered List Styling */
+  ol {
+    margin: 1em 0;
+    counter-reset: list-counter;
+     display: grid;
+    justify-content: center;
+  }
+
+  /* List Item Styling */
+  ol li {
+    font-size: 1em; /* Matches paragraph text size */
+    margin-bottom: 0.5em; /* Space between list items */
+    color: #333; /* Same as paragraph color */
+    line-height: 1.4; /* Comfortable spacing for list items */
+    position: relative; /* For custom numbering if needed */
+  }
+
+  /* News Generator Layout */
+  .news-generator {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+
+  .input-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #555;
+  }
+
+  input[type="text"],
+  input[type="file"],
+  input[type="datetime-local"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+  }
+
+  .output-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Output Image Container with Drag and Resize */
+  .output-image-container {
+    position: relative;
+    width: 640px;
+    height: 360px;
+    max-width: 100%;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    background-color: #333;
+    margin-bottom: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+
+  .live-banner {
+    background-color: #e30101;
+    padding: 7px 11px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-weight: bold;
+    border-radius: 3px;
+    z-index: 10; /* Ensure this is above the image */
+  }
+
+  .breaking-news {
+    width: fit-content;
+    background: linear-gradient(to bottom, #e30101, #b60000);
+    padding: 7px;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-align: center;
+    color: #fff;
+    z-index: 10; /* Ensure this is above the image */
+    position: relative; /* Change from absolute to relative */
+    display: block; /* Ensure it’s rendered as a block */
+    white-space: nowrap;
+  }
+
+  .channel-name-headline {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: #f1f1f1;
+    padding: 10px;
+    position: relative; /* Ensure proper stacking context */
+    z-index: 10; /* Ensure this is above the image */
+  }
+
+  .channel-name {
+    background-color: #cc0000;
+    color: #fff;
+    padding: 5px 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .headline-text {
+    color: #000000;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-left: 10px;
+    white-space: nowrap;
+  }
+
+  .description-container {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    position: relative; /* Ensure proper stacking context */
+    z-index: 10; /* Ensure this is above the image */
+  }
+
+  .description-text {
+    background-color: #f1ea19;
+    color: #000;
+    padding: 8px 10px;
+    font-weight: bold;
+    white-space: nowrap;
+    flex: 1;
+    text-align: left; /* Align text to the left */
+  }
+
+  .time-date {
+    font-size: 0.8em;
+    background-color: #28a745;
+    color: #fff;
+    padding: 2px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .reset-button {
+    padding: 8px 16px;
+    background-color: #f0f0f0; /* Light gray background */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+    color: #333; /* Dark text color */
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.8s ease;
+    margin-top: 15px;
+    align-items: center;
+  }
+
+  .reset-button:hover {
+    background-color: #e0e0e0; /* Slightly darker on hover */
+  }
+
+  /* Resizable and Draggable Image */
+  .draggable-image {
+    position: absolute;
+    width: 104% !important;
+    height: auto;
+    object-fit: cover;
+    cursor: move;
+    z-index: 1; /* Set lower than other text elements */
+  }
+
+  .download-button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .download-button {
+    padding: 12px 20px;
+    background-color: #f1ea19;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+  }
+
+  .download-button i {
+    margin-right: 5px;
+  }
+
+  .download-button:hover {
+    background-color: #f1d619;
+  }
+
+  .content-container {
+    max-width: 1100px; /* Limits the width of the container */
+    width: 100%; /* Ensures it takes up full width until max-width */
+    margin: 0 auto; /* Centers the container horizontally */
+    padding: 10px; /* Adds horizontal padding for spacing */
+  }
+
+  .content-image-container {
+    display: flex; /* Creates a side-by-side layout */
+    align-items: center; /* Vertically centers the content and image */
+    justify-content: space-between; /* Adds space between the two elements */
+    padding: 10px; /* Adds spacing around the container */
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  }
+
+  .content {
+    flex: 2;
+    padding-left: 5%;
+  }
+
+  .image {
+    text-align: center;
+  }
+
+  .image img {
+    max-width: 50%; /* Ensures the image is responsive */
+    height: auto; /* Maintains aspect ratio */
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  fieldset {
+    border: 2px solid #e30101;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #ffefef;
+  }
+
+  legend {
+    font-size: 18px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #e30101;
+    padding: 5px 10px;
+  }
+  
+  img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 25px;
+  }
+
+  /* Footer */
+  footer {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    font-size: 0.9em;
+  }
+footer p {
+  color: #fff;
+}
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+      .logo-image  {
+        width: 14em;
+      }
+    /* Show Hamburger Button */
+    .menu-toggle {
+      display: flex;
+    }
+
+    /* Hide Navigation Links Initially */
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 30px;
+      background-color: #e8e8e8;
+      border-radius: 5px;
+      padding: 15px;
+      gap: 10px;
+      width: 150px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Show Menu When Active */
+    .nav-links.active {
+      display: flex;
+      z-index: 10;
+    }
+
+    .news-generator {
+      flex-direction: column;
+      padding: 15px;
+      gap: 10px;
+    }
+    
+    .input-section {
+      padding: 15px;
+      font-size: 0.9em;
+    }
+
+    .headline-text,
+    .channel-name,
+    .breaking-news {
+      font-size: 1.1em;
+    }
+    
+    .output-image-container {
+       margin-top: 15px;
+    }
+    
+    img {
+        margin-bottom: 15px;
+    }
+    .content-image-container {
+      flex-direction: column; /* Stacks the content and image vertically */
+      text-align: center; /* Centers content and image */
+      padding: 15px;
+    }
+
+    .content {
+      padding-left: 0%;
+    }
+
+    .image {
+      text-align: center;
+    }
+    
+    ol {
+      text-align: left;
+    }
+    
+    legend {
+     font-size: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .main-header {
+      padding: 15px 10px;
+    }
+    
+    .logo-image  {
+        width: 12em;
+    }
+    
+    .input-section {
+      padding: 10px;
+      font-size: 0.8em;
+    }
+    
+     .output-image-container {
+     margin-top: 10px;
+    }
+    
+    .breaking-news,
+    .channel-name {
+      font-size: 1em;
+      padding: 5px;
+    }
+
+    .live-banner {
+      padding: 5px 8px;
+      font-size: 0.8em;
+    }
+
+    .headline-text {
+      font-size: 1.3em;
+    }
+    
+    .description-text {
+      font-weight: normal;
+    }
+    
+    .time-date {
+      font-size: 0.7em;
+      padding: 4px;
+    }
+    .download-button {
+      font-size: 0.9em;
+      padding: 10px;
+    }
+    
+    fieldset {
+      padding: 15px;
+    }
+  }
+  
+  
+  .branding {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #AFAFAF;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
